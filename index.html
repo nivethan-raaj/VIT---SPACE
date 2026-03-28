@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VITSpace — Space Data & Tools Portal</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- STARS BG -->
+<div class="stars-bg" id="starsBg"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="orbit-ring"></div>
+    <div class="orbit-ring r2"></div>
+    <div class="orbit-ring r3"></div>
+    <div class="loader-text">VITSpace</div>
+    <div class="loader-sub">Initializing Space Portal...</div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-logo" onclick="navigate('home')">
+    <span class="logo-icon">🛸</span>
+    <span class="logo-text">VIT<span class="accent">Space</span></span>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a onclick="navigate('home')" class="nav-link active" data-page="home" data-key="nav_home">Home</a>
+    <a onclick="navigate('about')" class="nav-link" data-page="about" data-key="nav_about">About</a>
+    <a onclick="navigate('datasets')" class="nav-link" data-page="datasets" data-key="nav_datasets">Datasets</a>
+    <a onclick="navigate('tools')" class="nav-link" data-page="tools" data-key="nav_tools">Tools</a>
+    <a onclick="navigate('missions')" class="nav-link" data-page="missions" data-key="nav_missions">Missions</a>
+    <a onclick="navigate('gallery')" class="nav-link" data-page="gallery" data-key="nav_gallery">Gallery</a>
+    <a onclick="navigate('research')" class="nav-link" data-page="research" data-key="nav_research">Research</a>
+    <a onclick="navigate('events')" class="nav-link" data-page="events" data-key="nav_events">Events</a>
+    <a onclick="navigate('forum')" class="nav-link" data-page="forum" data-key="nav_forum">Forum</a>
+    <a onclick="navigate('contact')" class="nav-link" data-page="contact" data-key="nav_contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('hi')">हि</button>
+      <button class="lang-btn" onclick="setLang('ta')">த</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGES CONTAINER -->
+<div class="pages-wrapper" id="pagesWrapper">
+
+  <!-- ======================== PAGE: HOME ======================== -->
+  <section class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge" data-key="hero_badge">🚀 VIT University Space Portal</div>
+        <h1 class="hero-title">
+          <span data-key="hero_title1">Explore the</span><br/>
+          <span class="gradient-text" data-key="hero_title2">Universe of Data</span>
+        </h1>
+        <p class="hero-sub" data-key="hero_sub">Your gateway to space science datasets, analytical tools, and research resources — crafted for UG/PG students and scholars.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="navigate('datasets')" data-key="hero_btn1">Explore Datasets</button>
+          <button class="btn-outline" onclick="navigate('tools')" data-key="hero_btn2">Launch Tools</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-num" data-target="2400">0</span><span class="stat-label" data-key="stat1">Datasets</span></div>
+          <div class="stat-item"><span class="stat-num" data-target="180">0</span><span class="stat-label" data-key="stat2">Tools</span></div>
+          <div class="stat-item"><span class="stat-num" data-target="5300">0</span><span class="stat-label" data-key="stat3">Students</span></div>
+          <div class="stat-item"><span class="stat-num" data-target="42">0</span><span class="stat-label" data-key="stat4">Missions</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="planet-container">
+          <div class="planet"></div>
+          <div class="planet-ring"></div>
+          <div class="moon"></div>
+          <div class="satellite">🛸</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="section-header">
+      <h2 data-key="feat_title">What VITSpace Offers</h2>
+      <p data-key="feat_sub">A complete ecosystem for space science education and research</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" onclick="navigate('datasets')">
+        <div class="feat-icon">🌌</div>
+        <h3 data-key="feat1_t">Open Datasets</h3>
+        <p data-key="feat1_p">Access curated NASA, ISRO, ESA datasets for your research projects and analysis.</p>
+        <span class="feat-link" data-key="feat_explore">Explore →</span>
+      </div>
+      <div class="feature-card" onclick="navigate('tools')">
+        <div class="feat-icon">🔭</div>
+        <h3 data-key="feat2_t">Analytical Tools</h3>
+        <p data-key="feat2_p">Use web-based tools for orbit calculation, spectral analysis, and image processing.</p>
+        <span class="feat-link" data-key="feat_explore">Explore →</span>
+      </div>
+      <div class="feature-card" onclick="navigate('missions')">
+        <div class="feat-icon">🚀</div>
+        <h3 data-key="feat3_t">Mission Archive</h3>
+        <p data-key="feat3_p">Deep dive into historical and current space missions with full documentation.</p>
+        <span class="feat-link" data-key="feat_explore">Explore →</span>
+      </div>
+      <div class="feature-card" onclick="navigate('research')">
+        <div class="feat-icon">📡</div>
+        <h3 data-key="feat4_t">Research Hub</h3>
+        <p data-key="feat4_p">Submit, discover and collaborate on space research papers and projects.</p>
+        <span class="feat-link" data-key="feat_explore">Explore →</span>
+      </div>
+      <div class="feature-card" onclick="navigate('gallery')">
+        <div class="feat-icon">🌠</div>
+        <h3 data-key="feat5_t">Space Gallery</h3>
+        <p data-key="feat5_p">Stunning imagery from Hubble, JWST, and ground-based observatories.</p>
+        <span class="feat-link" data-key="feat_explore">Explore →</span>
+      </div>
+      <div class="feature-card" onclick="navigate('events')">
+        <div class="feat-icon">🎯</div>
+        <h3 data-key="feat6_t">Events & Hackathons</h3>
+        <p data-key="feat6_p">Join space science hackathons, workshops, and seminars hosted by VIT.</p>
+        <span class="feat-link" data-key="feat_explore">Explore →</span>
+      </div>
+    </div>
+
+    <!-- LIVE FEED TICKER -->
+    <div class="ticker-wrap">
+      <div class="ticker-label">🔴 LIVE</div>
+      <div class="ticker-content" id="ticker">
+        <span>🛸 Chandrayaan-3 data available &nbsp;|&nbsp; 🌑 Mars Reconnaissance Orbiter feed updated &nbsp;|&nbsp; ☀️ Solar activity index: 74 &nbsp;|&nbsp; 🌍 ISS current pass data live &nbsp;|&nbsp; 🌟 New JWST deep field image released &nbsp;|&nbsp; 📡 ISRO SSLV dataset added &nbsp;|&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- QUICK ACCESS -->
+    <div class="section-header">
+      <h2 data-key="quick_title">Quick Access</h2>
+    </div>
+    <div class="quick-grid">
+      <div class="quick-card" onclick="navigate('datasets')"><span>📊</span><span data-key="q1">Datasets</span></div>
+      <div class="quick-card" onclick="navigate('tools')"><span>🔧</span><span data-key="q2">Tools</span></div>
+      <div class="quick-card" onclick="navigate('missions')"><span>🚀</span><span data-key="q3">Missions</span></div>
+      <div class="quick-card" onclick="navigate('gallery')"><span>🖼️</span><span data-key="q4">Gallery</span></div>
+      <div class="quick-card" onclick="navigate('research')"><span>📄</span><span data-key="q5">Research</span></div>
+      <div class="quick-card" onclick="navigate('forum')"><span>💬</span><span data-key="q6">Forum</span></div>
+      <div class="quick-card" onclick="navigate('events')"><span>📅</span><span data-key="q7">Events</span></div>
+      <div class="quick-card" onclick="navigate('contact')"><span>📬</span><span data-key="q8">Contact</span></div>
+    </div>
+  </section>
+
+  <!-- ======================== PAGE: ABOUT ======================== -->
+  <section class="page" id="page-about">
+    <div class="page-hero">
+      <h1 class="page-title" data-key="about_title">About VITSpace</h1>
+      <p data-key="about_sub">Empowering the next generation of space scientists</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card glass-card">
+        <h2 data-key="about_mission_t">Our Mission</h2>
+        <p data-key="about_mission_p">VITSpace is a dedicated academic portal designed to bridge the gap between raw space data and student researchers. We aggregate datasets from ISRO, NASA, ESA, and other agencies, making them accessible with intuitive tools and documentation.</p>
+      </div>
+      <div class="about-card glass-card">
+        <h2 data-key="about_vision_t">Our Vision</h2>
+        <p data-key="about_vision_p">To become India's premier academic space data hub — where every undergraduate, postgraduate, and research scholar has the tools and data needed to contribute meaningfully to space science.</p>
+      </div>
+    </div>
+
+    <div class="team-section">
+      <div class="section-header"><h2 data-key="team_title">Our Team</h2></div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">👨‍🚀</div>
+          <h3>Dr. Meenakshi S P</h3>
+          <p data-key="team_role1">Faculty Advisor — Web Development</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👩‍🔬</div>
+          <h3>Lakshya Sampathkumar</h3>
+          <p data-key="team_role2">Full Stack Lead</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👨‍💻</div>
+          <h3>Nivethan Raaj T</h3>
+          <p data-key="team_role3">Portal Developer — Final Year</p>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="timeline-section">
+      <div class="section-header"><h2 data-key="timeline_title">Milestones</h2></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><h4>2022</h4><p data-key="tl1">VITSpace portal conceptualized by Aerospace dept.</p></div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><h4>2023</h4><p data-key="tl2">First 500 datasets integrated from NASA Open Data.</p></div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><h4>2023</h4><p data-key="tl3">ISRO partnership established; Chandrayaan data added.</p></div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><h4>2024</h4><p data-key="tl4">Launched 40+ interactive analytical tools.</p></div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><h4>2026</h4><p data-key="tl5">5000+ registered students; trilingual interface launched.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PAGE: DATASETS ======================== -->
+  <section class="page" id="page-datasets">
+    <div class="page-hero">
+      <h1 class="page-title" data-key="ds_title">Space Datasets</h1>
+      <p data-key="ds_sub">Curated from NASA, ISRO, ESA and more</p>
+    </div>
+    <div class="filter-bar">
+      <input type="text" id="dsSearch" class="search-input" placeholder="🔍 Search datasets..." oninput="filterDatasets()"/>
+      <div class="filter-tags" id="dsTags">
+        <button class="tag active" onclick="filterByTag('all', this)" data-key="tag_all">All</button>
+        <button class="tag" onclick="filterByTag('isro', this)">ISRO</button>
+        <button class="tag" onclick="filterByTag('nasa', this)">NASA</button>
+        <button class="tag" onclick="filterByTag('esa', this)">ESA</button>
+        <button class="tag" onclick="filterByTag('solar', this)" data-key="tag_solar">Solar</button>
+        <button class="tag" onclick="filterByTag('planetary', this)" data-key="tag_planetary">Planetary</button>
+      </div>
+    </div>
+    <div class="datasets-grid" id="datasetsGrid"></div>
+  </section>
+
+  <!-- ======================== PAGE: TOOLS ======================== -->
+  <section class="page" id="page-tools">
+    <div class="page-hero">
+      <h1 class="page-title" data-key="tools_title">Analytical Tools</h1>
+      <p data-key="tools_sub">Interactive tools for space science computation</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">🪐</div>
+        <h3 data-key="tool1_t">Orbit Calculator</h3>
+        <p data-key="tool1_p">Compute orbital parameters: semi-major axis, eccentricity, period, velocity.</p>
+        <div class="tool-inputs">
+          <label>Altitude (km)</label>
+          <input type="number" id="altInput" placeholder="400" value="400"/>
+          <label>Eccentricity</label>
+          <input type="number" id="eccInput" placeholder="0" value="0" step="0.01" min="0" max="0.99"/>
+          <button class="btn-primary" onclick="calcOrbit()">Calculate</button>
+          <div class="tool-result" id="orbitResult"></div>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">☀️</div>
+        <h3 data-key="tool2_t">Solar Flux Index</h3>
+        <p data-key="tool2_p">Estimate solar flux and UV index based on distance from the Sun.</p>
+        <div class="tool-inputs">
+          <label>Distance from Sun (AU)</label>
+          <input type="number" id="auInput" placeholder="1" value="1" step="0.01"/>
+          <button class="btn-primary" onclick="calcSolar()">Calculate</button>
+          <div class="tool-result" id="solarResult"></div>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🌡️</div>
+        <h3 data-key="tool3_t">Blackbody Radiator</h3>
+        <p data-key="tool3_p">Wien's law: calculate peak wavelength for a given star temperature.</p>
+        <div class="tool-inputs">
+          <label>Temperature (K)</label>
+          <input type="number" id="tempInput" placeholder="5778" value="5778"/>
+          <button class="btn-primary" onclick="calcBlackbody()">Calculate</button>
+          <div class="tool-result" id="blackbodyResult"></div>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🔭</div>
+        <h3 data-key="tool4_t">Escape Velocity</h3>
+        <p data-key="tool4_p">Compute escape velocity for any celestial body given mass and radius.</p>
+        <div class="tool-inputs">
+          <label>Mass (×10²⁴ kg)</label>
+          <input type="number" id="massInput" placeholder="5.97" value="5.97" step="0.01"/>
+          <label>Radius (km)</label>
+          <input type="number" id="radiusInput" placeholder="6371" value="6371"/>
+          <button class="btn-primary" onclick="calcEscape()">Calculate</button>
+          <div class="tool-result" id="escapeResult"></div>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">📡</div>
+        <h3 data-key="tool5_t">Doppler Shift</h3>
+        <p data-key="tool5_p">Calculate observed frequency/wavelength due to relative motion.</p>
+        <div class="tool-inputs">
+          <label>Source Frequency (Hz)</label>
+          <input type="number" id="freqInput" placeholder="100" value="100"/>
+          <label>Velocity (km/s)</label>
+          <input type="number" id="velInput" placeholder="30" value="30"/>
+          <button class="btn-primary" onclick="calcDoppler()">Calculate</button>
+          <div class="tool-result" id="dopplerResult"></div>
+        </div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-icon">🌑</div>
+        <h3 data-key="tool6_t">Hohmann Transfer</h3>
+        <p data-key="tool6_p">Compute Δv for Hohmann orbital transfer between two circular orbits.</p>
+        <div class="tool-inputs">
+          <label>Initial Orbit (km)</label>
+          <input type="number" id="r1Input" placeholder="6771" value="6771"/>
+          <label>Final Orbit (km)</label>
+          <input type="number" id="r2Input" placeholder="42164" value="42164"/>
+          <button class="btn-primary" onclick="calcHohmann()">Calculate</button>
+          <div class="tool-result" id="hohmannResult"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PAGE: MISSIONS ======================== -->
+  <section class="page" id="page-missions">
+    <div class="page-hero">
+      <h1 class="page-title" data-key="missions_title">Space Missions</h1>
+      <p data-key="missions_sub">Past, present and future missions archive</p>
+    </div>
+    <div class="missions-tabs">
+      <button class="m-tab active" onclick="switchMTab('isro', this)">ISRO</button>
+      <button class="m-tab" onclick="switchMTab('nasa', this)">NASA</button>
+      <button class="m-tab" onclick="switchMTab('esa', this)">ESA</button>
+    </div>
+    <div class="missions-grid" id="missionsGrid"></div>
+  </section>
+
+  <!-- ======================== PAGE: GALLERY ======================== -->
+  <section class="page" id="page-gallery">
+    <div class="page-hero">
+      <h1 class="page-title" data-key="gallery_title">Space Gallery</h1>
+      <p data-key="gallery_sub">Stunning imagery from across the cosmos</p>
+    </div>
+    <div class="gallery-filter">
+      <button class="tag active" onclick="filterGallery('all', this)" data-key="tag_all">All</button>
+      <button class="tag" onclick="filterGallery('nebula', this)" data-key="g_nebula">Nebulae</button>
+      <button class="tag" onclick="filterGallery('galaxy', this)" data-key="g_galaxy">Galaxies</button>
+      <button class="tag" onclick="filterGallery('planet', this)" data-key="g_planet">Planets</button>
+      <button class="tag" onclick="filterGallery('star', this)" data-key="g_star">Stars</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <div class="lightbox-inner">
+        <div class="lb-img" id="lbImg"></div>
+        <h3 id="lbTitle"></h3>
+        <p id="lbDesc"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PAGE: RESEARCH ======================== -->
+  <section class="page" id="page-research">
+    <div class="page-hero">
+      <h1 class="page-title" data-key="research_title">Research Hub</h1>
+      <p data-key="research_sub">Discover and share space science research</p>
+    </div>
+    <div class="research-layout">
+      <div class="research-list" id="researchList"></div>
+      <div class="research-submit glass-card">
+        <h3 data-key="r_submit_t">Submit Your Research</h3>
+        <form onsubmit="submitResearch(event)">
+          <label data-key="r_name">Full Name</label>
+          <input type="text" id="rName" placeholder="Your name" required/>
+          <label data-key="r_email">Email</label>
+          <input type="email" id="rEmail" placeholder="your@email.com" required/>
+          <label data-key="r_title_f">Paper Title</label>
+          <input type="text" id="rTitle" placeholder="Paper/Project title" required/>
+          <label data-key="r_abstract">Abstract</label>
+          <textarea id="rAbstract" placeholder="Brief abstract (250 words max)" rows="4"></textarea>
+          <label data-key="r_category">Category</label>
+          <select id="rCategory">
+            <option value="astrophysics">Astrophysics</option>
+            <option value="remote">Remote Sensing</option>
+            <option value="planetary">Planetary Science</option>
+            <option value="solar">Solar Physics</option>
+            <option value="astrobiology">Astrobiology</option>
+          </select>
+          <button type="submit" class="btn-primary" data-key="r_btn">Submit Paper</button>
+          <div class="form-msg" id="researchMsg"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PAGE: EVENTS ======================== -->
+  <section class="page" id="page-events">
+    <div class="page-hero">
+      <h1 class="page-title" data-key="events_title">Events & Hackathons</h1>
+      <p data-key="events_sub">Stay updated with VITSpace events</p>
+    </div>
+    <div class="events-grid" id="eventsGrid"></div>
+    <div class="register-section glass-card">
+      <h3 data-key="ev_reg_t">Register for an Event</h3>
+      <form onsubmit="registerEvent(event)">
+        <label data-key="ev_name">Full Name</label>
+        <input type="text" id="evName" placeholder="Your full name" required/>
+        <label data-key="ev_id">Student ID</label>
+        <input type="text" id="evId" placeholder="VIT Student ID" required/>
+        <label data-key="ev_dept">Department</label>
+        <input type="text" id="evDept" placeholder="Your department" required/>
+        <label data-key="ev_year">Year</label>
+        <select id="evYear">
+          <option>1st Year</option><option>2nd Year</option><option>3rd Year</option>
+          <option>4th Year</option><option>PG 1st Year</option><option>PG 2nd Year</option><option>PhD Scholar</option>
+        </select>
+        <label data-key="ev_event">Select Event</label>
+        <select id="evEvent">
+          <option>SpaceHack 2025</option>
+          <option>ISRO Data Challenge</option>
+          <option>Astro Photography Contest</option>
+          <option>Orbital Mechanics Workshop</option>
+          <option>Satellite Design Bootcamp</option>
+        </select>
+        <button type="submit" class="btn-primary" data-key="ev_btn">Register Now</button>
+        <div class="form-msg" id="evMsg"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======================== PAGE: FORUM ======================== -->
+  <section class="page" id="page-forum">
+    <div class="page-hero">
+      <h1 class="page-title" data-key="forum_title">Community Forum</h1>
+      <p data-key="forum_sub">Ask, discuss, and collaborate with peers</p>
+    </div>
+    <div class="forum-layout">
+      <div class="forum-posts" id="forumPosts"></div>
+      <div class="forum-new glass-card">
+        <h3 data-key="forum_new_t">Start a Discussion</h3>
+        <form onsubmit="postForum(event)">
+          <label data-key="f_username">Username</label>
+          <input type="text" id="fUser" placeholder="Your username" required/>
+          <label data-key="f_topic">Topic</label>
+          <input type="text" id="fTopic" placeholder="Discussion topic" required/>
+          <label data-key="f_category">Category</label>
+          <select id="fCat">
+            <option>General</option>
+            <option>Datasets Help</option>
+            <option>Tools Support</option>
+            <option>Research</option>
+            <option>Projects</option>
+            <option>Events</option>
+          </select>
+          <label data-key="f_message">Message</label>
+          <textarea id="fMsg" rows="4" placeholder="Describe your question or topic..." required></textarea>
+          <button type="submit" class="btn-primary" data-key="f_btn">Post Discussion</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PAGE: CONTACT ======================== -->
+  <section class="page" id="page-contact">
+    <div class="page-hero">
+      <h1 class="page-title" data-key="contact_title">Contact Us</h1>
+      <p data-key="contact_sub">Get in touch with the VITSpace team</p>
+    </div>
+    <div class="contact-layout">
+      <div class="contact-info">
+        <div class="glass-card contact-card">
+          <div class="contact-icon">📍</div>
+          <h4 data-key="c_addr_t">Address</h4>
+          <p data-key="c_addr">VIT University, Vellore, Tamil Nadu - 632014, India</p>
+        </div>
+        <div class="glass-card contact-card">
+          <div class="contact-icon">📧</div>
+          <h4 data-key="c_email_t">Email</h4>
+          <p>vitspace@vit.ac.in</p>
+        </div>
+        <div class="glass-card contact-card">
+          <div class="contact-icon">📞</div>
+          <h4 data-key="c_phone_t">Phone</h4>
+          <p>+91 416 220 2020</p>
+        </div>
+        <div class="glass-card contact-card">
+          <div class="contact-icon">🕐</div>
+          <h4 data-key="c_hours_t">Working Hours</h4>
+          <p data-key="c_hours">Mon–Fri: 9 AM – 6 PM IST</p>
+        </div>
+      </div>
+      <div class="glass-card contact-form-wrap">
+        <h3 data-key="c_form_t">Send a Message</h3>
+        <form onsubmit="sendContact(event)">
+          <label data-key="c_name">Full Name</label>
+          <input type="text" id="cName" placeholder="Your name" required/>
+          <label data-key="c_email">Email Address</label>
+          <input type="email" id="cEmail" placeholder="your@email.com" required/>
+          <label data-key="c_subject">Subject</label>
+          <input type="text" id="cSubject" placeholder="Subject of inquiry" required/>
+          <label data-key="c_type">Query Type</label>
+          <select id="cType">
+            <option data-key="c_opt1">Dataset Access</option>
+            <option data-key="c_opt2">Tool Support</option>
+            <option data-key="c_opt3">Research Collaboration</option>
+            <option data-key="c_opt4">Event Registration</option>
+            <option data-key="c_opt5">General Inquiry</option>
+          </select>
+          <label data-key="c_msg">Message</label>
+          <textarea id="cMsg" rows="5" placeholder="Describe your query..." required></textarea>
+          <button type="submit" class="btn-primary" data-key="c_btn">Send Message</button>
+          <div class="form-msg" id="contactMsg"></div>
+        </form>
+      </div>
+    </div>
+    <div class="faq-section">
+      <div class="section-header"><h2 data-key="faq_title">Frequently Asked Questions</h2></div>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- ======================== PAGE: LOGIN ======================== -->
+  <section class="page" id="page-login">
+    <div class="auth-wrapper">
+      <div class="auth-box glass-card">
+        <div class="auth-logo">🛸 VITSpace</div>
+        <h2 data-key="login_title">Student Login</h2>
+        <form onsubmit="handleLogin(event)">
+          <label data-key="login_id">Student ID / Email</label>
+          <input type="text" id="loginId" placeholder="VIT Student ID or email" required/>
+          <label data-key="login_pass">Password</label>
+          <input type="password" id="loginPass" placeholder="••••••••" required/>
+          <div class="auth-options">
+            <label class="checkbox-label"><input type="checkbox"/> <span data-key="login_remember">Remember me</span></label>
+            <a class="link-text" data-key="login_forgot">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn-primary w-full" data-key="login_btn">Login</button>
+          <div class="form-msg" id="loginMsg"></div>
+        </form>
+        <p class="auth-switch" data-key="login_switch">Don't have an account? <a onclick="navigate('register')" class="link-text">Register here</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PAGE: REGISTER ======================== -->
+  <section class="page" id="page-register">
+    <div class="auth-wrapper">
+      <div class="auth-box glass-card" style="max-width:520px">
+        <div class="auth-logo">🛸 VITSpace</div>
+        <h2 data-key="reg_title">Create Account</h2>
+        <form onsubmit="handleRegister(event)">
+          <div class="form-row">
+            <div class="form-col">
+              <label data-key="reg_fname">First Name</label>
+              <input type="text" id="regFname" placeholder="First name" required/>
+            </div>
+            <div class="form-col">
+              <label data-key="reg_lname">Last Name</label>
+              <input type="text" id="regLname" placeholder="Last name" required/>
+            </div>
+          </div>
+          <label data-key="reg_email">Email Address</label>
+          <input type="email" id="regEmail" placeholder="your@vit.ac.in" required/>
+          <label data-key="reg_sid">Student ID</label>
+          <input type="text" id="regSid" placeholder="VIT Student ID" required/>
+          <label data-key="reg_dept">Department</label>
+          <select id="regDept">
+            <option>Aerospace Engineering</option>
+            <option>Physics</option>
+            <option>Computer Science</option>
+            <option>Electronics & Communication</option>
+            <option>Mathematics</option>
+            <option>Chemistry</option>
+            <option>Other</option>
+          </select>
+          <label data-key="reg_prog">Program</label>
+          <select id="regProg">
+            <option>B.Tech</option><option>M.Tech</option><option>M.Sc</option><option>Ph.D</option><option>Integrated M.Tech</option>
+          </select>
+          <label data-key="reg_pass">Password</label>
+          <input type="password" id="regPass" placeholder="Min 8 characters" required/>
+          <label data-key="reg_cpass">Confirm Password</label>
+          <input type="password" id="regCpass" placeholder="Repeat password" required/>
+          <div class="terms-check">
+            <label class="checkbox-label"><input type="checkbox" required/> <span data-key="reg_terms">I agree to the Terms of Service and Privacy Policy</span></label>
+          </div>
+          <button type="submit" class="btn-primary w-full" data-key="reg_btn">Create Account</button>
+          <div class="form-msg" id="regMsg"></div>
+        </form>
+        <p class="auth-switch" data-key="reg_switch">Already have an account? <a onclick="navigate('login')" class="link-text">Login here</a></p>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end pages-wrapper -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-text" style="font-size:1.5rem">🛸 VIT<span class="accent">Space</span></div>
+      <p data-key="footer_tagline">India's premier academic space data portal for students and scholars.</p>
+      <div class="social-links">
+        <a href="#" class="social-btn">Lakshya Sampathkumar</a>
+        <a href="#" class="social-btn">+91 7708760951</a>
+        <a href="#" class="social-btn">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4 data-key="footer_portal">Portal</h4>
+      <a onclick="navigate('datasets')" data-key="nav_datasets">Datasets</a>
+      <a onclick="navigate('tools')" data-key="nav_tools">Tools</a>
+      <a onclick="navigate('missions')" data-key="nav_missions">Missions</a>
+      <a onclick="navigate('gallery')" data-key="nav_gallery">Gallery</a>
+    </div>
+    <div class="footer-links">
+      <h4 data-key="footer_community">Community</h4>
+      <a onclick="navigate('research')" data-key="nav_research">Research</a>
+      <a onclick="navigate('events')" data-key="nav_events">Events</a>
+      <a onclick="navigate('forum')" data-key="nav_forum">Forum</a>
+      <a onclick="navigate('contact')" data-key="nav_contact">Contact</a>
+    </div>
+    <div class="footer-links">
+      <h4 data-key="footer_account">Account</h4>
+      <a onclick="navigate('login')" data-key="login_title">Login</a>
+      <a onclick="navigate('register')" data-key="reg_title">Register</a>
+      <a onclick="navigate('about')" data-key="nav_about">About</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-key="footer_copy">© 2026 VITSpace — VIT University. All rights reserved.</p>
+    <p class="footer-langs">🌐 English | हिंदी | தமிழ்</p>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>
